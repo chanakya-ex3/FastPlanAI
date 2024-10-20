@@ -1,0 +1,325 @@
+1. Tech Stack Suggestion based on team
+Req:
+{
+    "Description": "Hi Description",
+    "Existing Stack": {
+        frontend: "Hii frontend",
+        backend: "BAckend",
+        infrastructure: "Hii Issue",
+        UI/UX: "TechStack"
+    }
+}
+
+Res:
+{
+    Suggested Techstacks:
+    [
+        {
+            frontend: "Hii frontend",
+            backend: "BAckend",
+            infrastructure: "Hii Issue",
+            UI/UX: "TechStack"
+        },
+        {
+            frontend: "Hii frontend",
+            backend: "BAckend",
+            infrastructure: "Hii Issue",
+            UI/UX: "TechStack"
+        },
+        {
+            frontend: "Hii frontend",
+            backend: "BAckend",
+            infrastructure: "Hii Issue",
+            UI/UX: "TechStack"
+        },
+    ]
+}
+
+
+2. Roadmap Creation with with project Description
+Request:
+{
+    ProjectDescription:"Description"
+    Stack: []
+}
+Response:
+{
+    items:{
+        frontend:
+        [
+        {
+            "Title":Initialize Project,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"2"
+            "High Priority":false
+        },
+        {
+            "Title":Build Auth Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        },
+        {
+            "Title":Build HomePage,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"5"
+            "High Priority":false
+        },
+        {
+            "Title":Build Design Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        }
+    ],
+    backend:
+    [
+        {
+            "Title":Initialize Project,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"2"
+            "High Priority":false
+        },
+        {
+            "Title":Build Auth Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        },
+        {
+            "Title":Build HomePage,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"5"
+            "High Priority":false
+        },
+        {
+            "Title":Build Design Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        }
+    ],
+    infrastructure:
+    [
+        {
+            "Title":Initialize Project,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"2"
+            "High Priority":false
+        },
+        {
+            "Title":Build Auth Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        },
+        {
+            "Title":Build HomePage,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"5"
+            "High Priority":false
+        },
+        {
+            "Title":Build Design Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        }
+    ],
+    UI/UX:
+    [
+        {
+            "Title":Initialize Project,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"2"
+            "High Priority":false
+        },
+        {
+            "Title":Build Auth Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        },
+        {
+            "Title":Build HomePage,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"5"
+            "High Priority":false
+        },
+        {
+            "Title":Build Design Page,
+            "Description":"Initialize with relevant configuration",
+            "Estimated":"1",
+            "Reward":"1"
+            "High Priority":false
+        }
+    ]
+    }
+}
+
+
+
+// got this
+
+{
+  "phases": [
+    {
+      "title": "Project Setup",
+      "steps": [
+        {
+          "description": "Install Node.js and npm/yarn.",
+          "command": "Download and install Node.js from https://nodejs.org/"
+        },
+        {
+          "description": "Create a new React project.",
+          "command": "npx create-react-app my-ecommerce-site"
+        },
+        {
+          "description": "Navigate into the project directory.",
+          "command": "cd my-ecommerce-site"
+        },
+        {
+          "description": "Start the development server.",
+          "command": "npm start"
+        }
+      ]
+    },
+    {
+      "title": "Basic Structure & Styling",
+      "steps": [
+        {
+          "description": "Create components for header, footer, and main content area.",
+          "command": "Create src/components/Header.js, src/components/Footer.js, src/components/MainContent.js"
+        },
+        {
+          "description": "Implement basic layout using CSS or a CSS framework (e.g., Bootstrap, Tailwind CSS).",
+          "command": "Install a CSS framework (optional): npm install bootstrap"
+        },
+        {
+          "description": "Set up navigation links in the header (Home, Products, Cart, etc.).",
+          "command": "Modify src/components/Header.js"
+        }
+      ]
+    },
+    {
+      "title": "Product Listing & Details",
+      "steps": [
+        {
+          "description": "Create a Product component to display individual products.",
+          "command": "Create src/components/Product.js"
+        },
+        {
+          "description": "Create a ProductsList component to display multiple products.",
+          "command": "Create src/components/ProductsList.js"
+        },
+        {
+          "description": "Fetch product data from a placeholder API or local JSON file.",
+          "command": "Create src/services/ProductService.js to handle fetching data"
+        },
+        {
+          "description": "Render product listings on the main content area.",
+          "command": "Modify src/components/MainContent.js"
+        },
+        {
+          "description": "Create a ProductDetails component to show detailed product information.",
+          "command": "Create src/components/ProductDetails.js"
+        },
+        {
+          "description": "Implement navigation to product details pages.",
+          "command": "Update src/components/ProductsList.js and src/components/Product.js"
+        }
+      ]
+    },
+    {
+      "title": "Shopping Cart",
+      "steps": [
+        {
+          "description": "Create a Cart component to manage items in the cart.",
+          "command": "Create src/components/Cart.js"
+        },
+        {
+          "description": "Implement functionality to add items to the cart.",
+          "command": "Update src/components/Product.js, src/components/ProductsList.js, and src/components/Cart.js"
+        },
+        {
+          "description": "Implement functionality to remove items from the cart.",
+          "command": "Update src/components/Cart.js"
+        },
+        {
+          "description": "Display cart total and update it when items are added/removed.",
+          "command": "Update src/components/Cart.js"
+        },
+        {
+          "description": "Implement cart badge in the header to show cart count.",
+          "command": "Update src/components/Header.js"
+        }
+      ]
+    },
+    {
+      "title": "Checkout",
+      "steps": [
+        {
+          "description": "Create a Checkout component to handle payment and order processing.",
+          "command": "Create src/components/Checkout.js"
+        },
+        {
+          "description": "Implement a basic checkout form with user details and payment information.",
+          "command": "Update src/components/Checkout.js"
+        },
+        {
+          "description": "Integrate with a payment gateway (e.g., Stripe, PayPal) or a mock payment system.",
+          "command": "Install payment gateway libraries if required (e.g., @stripe/react-native)"
+        },
+        {
+          "description": "Display order confirmation and thank you message.",
+          "command": "Update src/components/Checkout.js"
+        }
+      ]
+    },
+    {
+      "title": "User Authentication",
+      "steps": [
+        {
+          "description": "Implement user registration and login functionality.",
+          "command": "Create src/components/Auth.js, src/services/AuthService.js"
+        },
+        {
+          "description": "Create a user profile component for account management.",
+          "command": "Create src/components/Profile.js"
+        },
+        {
+          "description": "Store user authentication state and manage user data.",
+          "command": "Implement user authentication logic using local storage or a backend service"
+        }
+      ]
+    },
+    {
+      "title": "Testing & Deployment",
+      "steps": [
+        {
+          "description": "Write unit tests for components using Jest or other testing frameworks.",
+          "command": "Create tests in the __tests__ directory"
+        },
+        {
+          "description": "Deploy the website to a hosting platform (e.g., Netlify, Vercel, AWS).",
+          "command": "Follow deployment instructions of your chosen platform"
+        }
+      ]
+    }
+  ]
+}
