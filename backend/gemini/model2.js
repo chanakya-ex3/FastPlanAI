@@ -1,7 +1,15 @@
+const AWS = require('aws-sdk')
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const dotenv = require('dotenv');
 const format = require('../datasets/responsetemplate.json');
 dotenv.config();
+
+AWS.config.update({
+    region: process.env.AWS_REGION || 'us-west-2',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
+
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
@@ -9,7 +17,7 @@ const genAIModel = async ({ message, tune, format }) => {
   let count = 0;
   const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
   const prompt =
-  `Today's date is ${new Date().toISOString().split('T')[0]}.`
+  "Today's date is 2022-01-01. "  
   +
     message +
     ' \n' +
