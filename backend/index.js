@@ -13,7 +13,7 @@ const startProject = require('./routes/manager/project/projectdetails/projectdet
 const tasks = require('./routes/manager/project/projectdetails/tasks');
 const port = 3000;
 app.use(express.json());
-
+app.use(express.static('public'));
 app.use(cors());
 // cors allow localhost 5173
 app.use((req, res, next) => {
@@ -31,6 +31,9 @@ app.use('/api/v1/project/',middleware, startProject);
 app.use('/api/v1/project/tasks/',middleware, tasks);
 app.get('/api/v1/check',middleware ,(req, res) => {
     res.status(200).json({ message: 'success' });
+});
+app.get('/', (req, res) => {
+    res.send('FlastPlanAI on Vercel!');
 });
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
