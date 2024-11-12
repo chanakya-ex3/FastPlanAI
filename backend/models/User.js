@@ -30,4 +30,4 @@ const User = new Schema({
         ref: 'Team'
     },
 });
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('User', User);  

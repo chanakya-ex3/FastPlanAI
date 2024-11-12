@@ -4,8 +4,9 @@ dotenv.config();
 
 
 const middleware = (req, res, next) => {
+    // logger
     const token = req.header('Authorization');
-    if (!token) {
+    if (!token || token === 'null') {
         return res.status(401).json({ message: 'No token, authorization denied' });
     }
     try {

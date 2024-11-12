@@ -1,0 +1,422 @@
+[
+    {
+        "project_name": "Chess Online",
+        "description": "Create an online web game like chess.com using React, Express, MongoDB, and Node.js.",
+        "start_date": "2024-10-20",
+        "end_date": "2024-12-30",
+        "roadmap": [
+            {
+                "milestone": "Basic Chess Game Functionality",
+                "deadline": "2024-10-28",
+                "tasks": [
+                    {
+                        "name": "Set up React Frontend",
+                        "description": "Create the basic UI for the chessboard and game controls using React and TailwindCSS.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 8,
+                        "reward": 10,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Chess Logic Implementation",
+                        "description": "Implement the core chess game logic, including move validation and piece movement.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 12,
+                        "reward": 15,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Backend Server Setup",
+                        "description": "Set up the Express.js backend with MongoDB database for user accounts and game data.",
+                        "assigned_to": "Hari",
+                        "estimated_time": 6,
+                        "reward": 8,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Frontend-Backend Integration",
+                        "description": "Connect the React frontend to the Express.js backend for data exchange.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "User Authentication and Registration",
+                        "description": "Implement user login and registration functionality using the backend.",
+                        "assigned_to": "Hari",
+                        "estimated_time": 6,
+                        "reward": 8,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Game Data Storage and Retrieval",
+                        "description": "Implement database interactions to store and retrieve game data.",
+                        "assigned_to": "Hari",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Basic Game UI and UX",
+                        "description": "Design and implement the basic UI for the game, including the chessboard, game controls, and player information.",
+                        "assigned_to": "Chanakya",
+                        "estimated_time": 6,
+                        "reward": 8,
+                        "flags": {
+                            "type": "L"
+                        }
+                    }
+                ]
+            },
+            {
+                "milestone": "Multiplayer Functionality",
+                "deadline": "2024-11-11",
+                "tasks": [
+                    {
+                        "name": "Implement Real-time Communication",
+                        "description": "Integrate real-time communication using WebSockets or a similar technology to enable multiplayer games.",
+                        "assigned_to": "Hari",
+                        "estimated_time": 8,
+                        "reward": 10,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Multiplayer Game Logic",
+                        "description": "Implement the logic for handling player turns, move synchronization, and game state updates in real-time.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 10,
+                        "reward": 12,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Multiplayer UI Enhancements",
+                        "description": "Update the UI to display opponent's moves and player information in real-time.",
+                        "assigned_to": "Chanakya",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "L"
+                        }
+                    },
+                    {
+                        "name": "Game Lobby and Matchmaking",
+                        "description": "Implement a game lobby where players can search for opponents and start games.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 6,
+                        "reward": 8,
+                        "flags": {
+                            "type": "I"
+                        }
+                    }
+                ]
+            },
+            {
+                "milestone": "Additional Game Features",
+                "deadline": "2024-11-25",
+                "tasks": [
+                    {
+                        "name": "Game History and Replay",
+                        "description": "Implement functionality to view and replay past games.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 6,
+                        "reward": 8,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Game Analysis and Hints",
+                        "description": "Add features for analyzing games and providing hints to players.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 8,
+                        "reward": 10,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "User Profiles and Statistics",
+                        "description": "Implement user profiles to track player statistics and progress.",
+                        "assigned_to": "Hari",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "User Interface Enhancements",
+                        "description": "Further refine the UI and UX for a more polished and user-friendly experience.",
+                        "assigned_to": "Chanakya",
+                        "estimated_time": 6,
+                        "reward": 8,
+                        "flags": {
+                            "type": "L"
+                        }
+                    }
+                ]
+            },
+            {
+                "milestone": "Testing and Deployment",
+                "deadline": "2024-12-15",
+                "tasks": [
+                    {
+                        "name": "Unit Testing",
+                        "description": "Write unit tests for core game logic and backend functionalities.",
+                        "assigned_to": "Sumit",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Integration Testing",
+                        "description": "Perform integration testing to ensure the frontend and backend work seamlessly together.",
+                        "assigned_to": "Chanakya",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "User Acceptance Testing (UAT)",
+                        "description": "Conduct UAT to get feedback from potential users and identify any usability issues.",
+                        "assigned_to": "Chanakya",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Deployment to AWS",
+                        "description": "Deploy the application to AWS using a suitable cloud infrastructure.",
+                        "assigned_to": "Chanakya",
+                        "estimated_time": 6,
+                        "reward": 8,
+                        "flags": {
+                            "type": "I"
+                        }
+                    },
+                    {
+                        "name": "Post-Deployment Monitoring and Maintenance",
+                        "description": "Set up monitoring and maintenance procedures to ensure the application remains stable and reliable.",
+                        "assigned_to": "Hari",
+                        "estimated_time": 4,
+                        "reward": 6,
+                        "flags": {
+                            "type": "I"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "project_name": "Ecommerce Web App",
+        "description": "Building a full-fledged ecommerce web application with user authentication, product management, shopping cart, order processing, and secure payment integration.",
+        "start_date": "2024-10-20",
+        "end_date": "2024-12-30",
+        "roadmap": [
+          {
+            "milestone": "Backend Setup and Database",
+            "deadline": "2024-10-28",
+            "tasks": [
+              {
+                "name": "Set up Node.js and Express.js Server",
+                "description": "Configure Express.js server, define API endpoints, and implement basic routing.",
+                "assigned_to": "Hari",
+                "estimated_time": 8,
+                "reward": 10,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Database Design and Implementation",
+                "description": "Design MongoDB schema for products, users, orders, and other essential entities. Implement MongoDB connection and CRUD operations.",
+                "assigned_to": "Hari",
+                "estimated_time": 12,
+                "reward": 15,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Authentication System",
+                "description": "Implement user authentication using JWT (JSON Web Token) for secure login and registration.",
+                "assigned_to": "Hari",
+                "estimated_time": 10,
+                "reward": 12,
+                "flags": {
+                  "type": "I"
+                }
+              }
+            ]
+          },
+          {
+            "milestone": "Frontend Development",
+            "deadline": "2024-11-11",
+            "tasks": [
+              {
+                "name": "Create React Application",
+                "description": "Set up a new React project using Create React App, install necessary dependencies, and implement basic routing.",
+                "assigned_to": "Sumit",
+                "estimated_time": 4,
+                "reward": 5,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Build Product Display Page",
+                "description": "Design and implement product listing components, including filtering and sorting functionality, using TailwindCSS for styling.",
+                "assigned_to": "Sumit",
+                "estimated_time": 12,
+                "reward": 15,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Create User Interface Components",
+                "description": "Develop reusable UI components for login, registration, product details, cart, and checkout pages.",
+                "assigned_to": "Sumit",
+                "estimated_time": 16,
+                "reward": 20,
+                "flags": {
+                  "type": "I"
+                }
+              }
+            ]
+          },
+          {
+            "milestone": "API Integration and Functionality",
+            "deadline": "2024-11-25",
+            "tasks": [
+              {
+                "name": "Integrate Frontend with Backend APIs",
+                "description": "Connect React components with backend APIs using Fetch or Axios for data fetching and manipulation.",
+                "assigned_to": "Sumit",
+                "estimated_time": 10,
+                "reward": 12,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Implement Product Management",
+                "description": "Develop frontend functionality for adding, updating, and deleting products, utilizing backend API endpoints.",
+                "assigned_to": "Sumit",
+                "estimated_time": 10,
+                "reward": 12,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Implement Shopping Cart and Checkout",
+                "description": "Build a robust shopping cart system with functionalities like adding/removing items, calculating totals, and handling checkout flow.",
+                "assigned_to": "Sumit",
+                "estimated_time": 15,
+                "reward": 18,
+                "flags": {
+                  "type": "I"
+                }
+              }
+            ]
+          },
+          {
+            "milestone": "Testing and Deployment",
+            "deadline": "2024-12-15",
+            "tasks": [
+              {
+                "name": "Unit and Integration Testing",
+                "description": "Write unit tests for individual components and integration tests for API interactions.",
+                "assigned_to": "Chanakya",
+                "estimated_time": 10,
+                "reward": 12,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "UI/UX Testing",
+                "description": "Conduct usability testing to ensure smooth user experience and identify areas for improvement.",
+                "assigned_to": "Chanakya",
+                "estimated_time": 8,
+                "reward": 10,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Deployment on AWS",
+                "description": "Deploy the application on AWS cloud platform using Elastic Beanstalk or other suitable services.",
+                "assigned_to": "Chanakya",
+                "estimated_time": 12,
+                "reward": 15,
+                "flags": {
+                  "type": "I"
+                }
+              }
+            ]
+          },
+          {
+            "milestone": "Additional Features and Enhancements",
+            "deadline": "2024-12-30",
+            "tasks": [
+              {
+                "name": "Implement Payment Gateway Integration",
+                "description": "Integrate a secure payment gateway like Stripe or PayPal for processing online transactions.",
+                "assigned_to": "Hari",
+                "estimated_time": 12,
+                "reward": 15,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Add Search Functionality",
+                "description": "Develop a search bar and implement a robust search algorithm for finding relevant products.",
+                "assigned_to": "Sumit",
+                "estimated_time": 8,
+                "reward": 10,
+                "flags": {
+                  "type": "I"
+                }
+              },
+              {
+                "name": "Improve User Experience and Design",
+                "description": "Refine user interface and user experience based on feedback and testing results.",
+                "assigned_to": "Chanakya",
+                "estimated_time": 10,
+                "reward": 12,
+                "flags": {
+                  "type": "I"
+                }
+              }
+            ]
+          }
+        ]
+      }
+]

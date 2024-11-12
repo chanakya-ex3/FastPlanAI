@@ -1,0 +1,248 @@
+{
+    "project_name": "Ecommerce Web App",
+    "description": "Build an ecommerce web application using React, Express, MongoDB, and Node.js",
+    "start_date": "2024-10-20",
+    "end_date": "2024-12-30",
+    "roadmap": [
+        {
+            "milestone": "Frontend Development",
+            "deadline": "2024-10-28",
+            "tasks": [
+                {
+                    "name": "Setup React Project",
+                    "description": "Create a new React project and install necessary dependencies",
+                    "assigned_to": "38389483",
+                    "estimated_time": 2,
+                    "reward": 5,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Design UI Components",
+                    "description": "Design reusable UI components using Tailwind CSS",
+                    "assigned_to": "38389483",
+                    "estimated_time": 5,
+                    "reward": 8,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Implement Product Listing",
+                    "description": "Create a component to display products from the backend",
+                    "assigned_to": "38389483",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Implement Product Details",
+                    "description": "Create a component to display product details",
+                    "assigned_to": "38389483",
+                    "estimated_time": 2,
+                    "reward": 5,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Implement Shopping Cart",
+                    "description": "Create a shopping cart component with functionality to add, remove, and update items",
+                    "assigned_to": "38389483",
+                    "estimated_time": 4,
+                    "reward": 7,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Implement Checkout",
+                    "description": "Create a checkout component with payment integration",
+                    "assigned_to": "38389483",
+                    "estimated_time": 5,
+                    "reward": 8,
+                    "flags": {
+                        "type": "L"
+                    }
+                }
+            ]
+        },
+        {
+            "milestone": "Backend Development",
+            "deadline": "2024-11-04",
+            "tasks": [
+                {
+                    "name": "Setup Node.js and Express Server",
+                    "description": "Create a Node.js server using Express.js",
+                    "assigned_to": "38389484",
+                    "estimated_time": 2,
+                    "reward": 5,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Connect to MongoDB Database",
+                    "description": "Connect the backend server to a MongoDB database",
+                    "assigned_to": "38389484",
+                    "estimated_time": 2,
+                    "reward": 5,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Create Product API Endpoints",
+                    "description": "Create API endpoints to handle product CRUD operations",
+                    "assigned_to": "38389484",
+                    "estimated_time": 4,
+                    "reward": 7,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Create User API Endpoints",
+                    "description": "Create API endpoints to handle user authentication and registration",
+                    "assigned_to": "38389484",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Create Order API Endpoints",
+                    "description": "Create API endpoints to handle order creation and management",
+                    "assigned_to": "38389484",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "I"
+                    }
+                }
+            ]
+        },
+        {
+            "milestone": "Integration and Testing",
+            "deadline": "2024-11-11",
+            "tasks": [
+                {
+                    "name": "Integrate Frontend with Backend",
+                    "description": "Connect the React frontend to the Express backend",
+                    "assigned_to": "38389483",
+                    "estimated_time": 2,
+                    "reward": 5,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Perform Unit Testing",
+                    "description": "Write unit tests for frontend and backend components",
+                    "assigned_to": "38389485",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Perform Integration Testing",
+                    "description": "Test the integration between frontend and backend",
+                    "assigned_to": "38389485",
+                    "estimated_time": 2,
+                    "reward": 5,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Perform End-to-End Testing",
+                    "description": "Test the entire application flow from user login to order completion",
+                    "assigned_to": "38389485",
+                    "estimated_time": 4,
+                    "reward": 7,
+                    "flags": {
+                        "type": "I"
+                    }
+                }
+            ]
+        },
+        {
+            "milestone": "Deployment and Optimization",
+            "deadline": "2024-11-18",
+            "tasks": [
+                {
+                    "name": "Deploy to AWS",
+                    "description": "Deploy the application to AWS using a cloud provider",
+                    "assigned_to": "38389485",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "L"
+                    }
+                },
+                {
+                    "name": "Optimize Performance",
+                    "description": "Optimize application performance for speed and scalability",
+                    "assigned_to": "38389484",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Implement Security Measures",
+                    "description": "Implement security measures to protect user data and application",
+                    "assigned_to": "38389484",
+                    "estimated_time": 2,
+                    "reward": 5,
+                    "flags": {
+                        "type": "I"
+                    }
+                }
+            ]
+        },
+        {
+            "milestone": "Additional Features and Enhancements",
+            "deadline": "2024-11-25",
+            "tasks": [
+                {
+                    "name": "Implement Search Functionality",
+                    "description": "Add a search bar for users to find products",
+                    "assigned_to": "38389483",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "I"
+                    }
+                },
+                {
+                    "name": "Implement Recommendations",
+                    "description": "Provide product recommendations to users based on their browsing history",
+                    "assigned_to": "38389483",
+                    "estimated_time": 4,
+                    "reward": 7,
+                    "flags": {
+                        "type": "L"
+                    }
+                },
+                {
+                    "name": "Implement User Reviews and Ratings",
+                    "description": "Allow users to leave reviews and ratings for products",
+                    "assigned_to": "38389483",
+                    "estimated_time": 3,
+                    "reward": 6,
+                    "flags": {
+                        "type": "I"
+                    }
+                }
+            ]
+        }
+    ]
+}

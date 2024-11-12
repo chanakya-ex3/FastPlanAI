@@ -1,0 +1,198 @@
+{
+  "project_name": "My Project",
+  "description": "My Project Description",
+  "start_date": "2024-10-20",
+  "end_date": "2024-12-30",
+  "roadmap": [
+    {
+      "milestone": "Mitlstone 1",
+      "deadline": "2024-10-04",
+      "tasks": [
+        {
+          "name": "Task 1",
+          "description": "Task Description 1",
+          "assigned_to": "Team Member 1",
+          "estimated_time": 2,
+          "reward": 5,
+          "flags": {
+            "type": "I"
+          }
+        },
+        {
+          "name": "Task 2",
+          "description": "Task Description 2",
+          "assigned_to": "Team Member 2 (UI/UX)",
+          "estimated_time": 5,
+          "reward": 8,
+          "flags": {
+            "type": "L"
+          }
+        },
+        {
+          "name": "Task 3",
+          "description": "Task Description 3",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 3,
+          "reward": 6,
+          "flags": {
+            "type": "A"
+          }
+        }
+      ]
+    },
+    {
+      "milestone": "Mitlstone 2",
+      "deadline": "2024-10-21",
+      "tasks": [
+        {
+          "name": "Task 1",
+          "description": "Task Description 1",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 2,
+          "reward": 5,
+          "flags": {
+            "type": "I"
+          }
+        },
+        {
+          "name": "Task 2",
+          "description": "Task Description 2",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 1,
+          "reward": 4,
+          "flags": {
+            "type": "A"
+          }
+        },
+        {
+          "name": "Task 3",
+          "description": "Task Description 3",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 2,
+          "reward": 5,
+          "flags": {
+            "type": "L"
+          }
+        },
+        {
+          "name": "Task 4",
+          "description": "Task Description 4",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 4,
+          "reward": 7,
+          "flags": {
+            "type": "I"
+          }
+        }
+      ]
+    },
+    {
+      "milestone": "Milestone 3",
+      "deadline": "2024-10-28",
+      "tasks": [
+        {
+          "name": "Task 1",
+          "description": "Task Description 1",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 3,
+          "reward": 6,
+          "flags": {
+            "type": "A"
+          }
+        },
+        {
+          "name": "Task 2",
+          "description": "Task Description 2",
+          "assigned_to": "Team Member 1",
+          "estimated_time": 2,
+          "reward": 5,
+          "flags": {
+            "type": "I"
+          }
+        },
+        {
+          "name": "Task 3",
+          "description": "Task Description 3",
+          "assigned_to": "Team Member 2",
+          "estimated_time": 3,
+          "reward": 7,
+          "flags": {
+            "type": "L"
+          }
+        },
+        {
+          "name": "Task 4",
+          "description": "Task Description 4",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 2,
+          "reward": 6,
+          "flags": {
+            "type": "I"
+          }
+        }
+      ]
+    },
+    {
+      "milestone": "Milestone 4",
+      "deadline": "2024-11-04",
+      "tasks": [
+        {
+          "name": "Task 1",
+          "description": "Task Description 1",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 3,
+          "reward": 7,
+          "flags": {
+            "type": "I"
+          }
+        },
+        {
+          "name": "Task 2",
+          "description": "Task Description 2",
+          "assigned_to": "Team Member 1",
+          "estimated_time": 2,
+          "reward": 5,
+          "flags": {
+            "type": "A"
+          }
+        }
+      ]
+    },
+    {
+      "milestone": "Additional Features and Enhancements",
+      "deadline": "2024-11-25",
+      "tasks": [
+        {
+          "name": "Task 1",
+          "description": "Task Description 1",
+          "assigned_to": "Team Member 2",
+          "estimated_time": 4,
+          "reward": 8,
+          "flags": {
+            "type": "L"
+          }
+        },
+        {
+          "name": "Task 2",
+          "description": "Task Description 2",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 3,
+          "reward": 6,
+          "flags": {
+            "type": "I"
+          }
+        },
+        {
+          "name": "Task 3",
+          "description": "Task Description 3",
+          "assigned_to": "Team Member 3",
+          "estimated_time": 3,
+          "reward": 7,
+          "flags": {
+            "type": "A"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -11,7 +11,8 @@ const Task = new Schema({
         required: true
     },
     assigned_to:{
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     status:{
@@ -20,7 +21,8 @@ const Task = new Schema({
         enum: ['pending', 'in_progress', 'completed']
     },
     flags :{
-        type:[String],
+        type:String,
+        enum: ['L','I','A']
     },
     start_time :{
         type: Date,
@@ -32,6 +34,10 @@ const Task = new Schema({
         type: Number,
         required: true
     },
+    created_at:{
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model('Task', Task);

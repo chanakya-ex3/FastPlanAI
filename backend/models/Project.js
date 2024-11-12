@@ -11,7 +11,7 @@ const Project = new Schema({
     type: String,
     required: true,
   },
-  tech_stack_recommended: {
+  tech_stack: {
     type: [String], // Array of tech stack items suggested by AI
   },
   start_date: {
@@ -22,7 +22,11 @@ const Project = new Schema({
     type: Date,
     required: true,
   },
-  roadmap: [Milestone], // Array of milestones with tasks
+  roadmap:{
+    type:[Schema.Types.ObjectId],
+    ref: 'Milestone',
+    default: []
+  }, // Array of milestones with tasks
   created_at: {
     type: Date,
     default: Date.now,

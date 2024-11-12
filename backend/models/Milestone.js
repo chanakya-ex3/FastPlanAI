@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Task = require('./Task');
 
 
 const Schema = mongoose.Schema;
@@ -13,7 +12,11 @@ const Milestone = new Schema({
     type: Date,
     required: true,
   },
-  tasks: [Task], // Array of tasks
+  tasks:{
+    type: [Schema.Types.ObjectId],
+    ref: 'Task',
+    default: []
+  }
 });
 
 module.exports = mongoose.model('Milestone', Milestone);

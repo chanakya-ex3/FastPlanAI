@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../../models/User');
+const User = require('../../../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
@@ -7,6 +7,7 @@ dotenv.config();
 
 router.post('/register', async (req, res) => {
   try {
+    console.log(req);
     const { name, email, password, role } = req.body;
     const user = await User.findOne({ email });
     if (user) {
@@ -59,7 +60,12 @@ router.post('/login', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: 3600 },
     );
-    res.status(200).json({ message: "Logged In successfully" ,token });
+    delete user.password;
+    res.status(200).json({ message: "Logged In successfully" ,token, user: {
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    } });
 
   } catch (err) {
     console.log(err);

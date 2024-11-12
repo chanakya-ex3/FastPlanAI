@@ -6,8 +6,10 @@ const Team = new Schema({
         type: String,
         required: true
     },
-    project_id: {
-        type: String,
+    project:{
+        type: Schema.Types.ObjectId,
+        ref:"Project",
+        default: null
     },
     members: {
         type: [Schema.Types.ObjectId],
