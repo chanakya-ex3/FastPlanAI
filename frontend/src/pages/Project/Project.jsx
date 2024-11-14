@@ -28,7 +28,7 @@ const Project = () => {
   const [techStacks, setTechStacks] = useState([]);
   const [selectedTechStack, setSelectedTechStack] = useState('');
   const [roadmap, setRoadmap] = useState(null);
-  const [changeTask, setChangeTask] = useState([]);
+
 
   useEffect(() => {
     fetch(`${BASE_URL}team/view`, {
@@ -80,22 +80,6 @@ const Project = () => {
       .then((data) => {
         console.log(data);
         window.location.reload();
-      })
-      .catch((err) => console.error(err));
-  };
-  const updateProject = () => {
-    fetch(`${BASE_URL}project/tasks/update`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token,
-      },
-      body: JSON.stringify({"tasks":changeTask}),
-    })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((data) => {
-        console.log(data);
-        setChangeTask([]);
       })
       .catch((err) => console.error(err));
   };
@@ -225,8 +209,8 @@ const Project = () => {
                   backgroundColor: 'transparent',
                 }}
               >
-                <Typography variant='h6' sx={{color:"white"}}>{milestone.milestone}</Typography>
-                <Typography variant='subtitle2' sx={{ mb: 2, color:'white' }}>
+                <Typography className='dark:text-white text-blue-500' variant='h6'>{milestone.milestone}</Typography>
+                <Typography className='dark:text-cyan-500 text-black' variant='subtitle2' sx={{ mb: 2, }}>
                   Deadline: {milestone.deadline}
                 </Typography>
                 {milestone.tasks.map((task, taskIndex) => {
@@ -244,14 +228,19 @@ const Project = () => {
                     default:
                       backgroundColor = 'red';
                   }
-                  const handleAssignedChange = (event) => {
-                    task.assigned_to = teamMembers.find(
-                      (member) => member._id === event.target.value
-                    );
-                    console.log(
-                      'found tm: ' + JSON.stringify(task.assigned_to)
-                    );
-                    setChangeTask([...changeTask, task]);
+                  const handleAssignedChange = async (event) => {
+                    task.assigned_to = event.target.value;
+                    // Optional: update the state to reflect changes in the UI
+                    await fetch(`${BASE_URL}project/tasks/update`, {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: token,
+                      },
+                      body: JSON.stringify({ tasks: [task] }),
+                    });
+
+                    
                     setRoadmap((prevRoadmap) => ({
                       ...prevRoadmap,
                       roadmap: prevRoadmap.roadmap.map((m, i) =>
@@ -402,16 +391,6 @@ const Project = () => {
             ))}
           </Box>
         )}
-        {roadmap && (
-          <Button
-            variant='contained'
-            color='primary'
-            sx={{ mt: 3 }}
-            onClick={() => updateProject()}
-          >
-            Update Project
-          </Button>
-        )}
       </Box>
     ) : (
       <Box sx={{ mt: 4, px: 2 }}>
@@ -470,11 +449,11 @@ const Project = () => {
                   p: 3,
                   mb: 3,
                   borderRadius: '12px',
-                  backgroundColor: 'lightgray',
+                  backgroundColor: 'transparent',
                 }}
               >
-                <Typography variant='h6' sx={{color:"white"}}>{milestone.milestone}</Typography>
-                <Typography variant='subtitle2' sx={{ mb: 2, color:'white' }}>
+                <Typography className='dark:text-cyan-500 text-black'  variant='h6'>{milestone.milestone}</Typography>
+                <Typography className='dark:text-cyan-500 text-black'  variant='subtitle2' sx={{ mb: 2 }}>
                   Deadline: {milestone.deadline}
                 </Typography>
                 {milestone.tasks.map((task, taskIndex) => {
@@ -496,6 +475,7 @@ const Project = () => {
                   const handleAssignedChange = (event) => {
                     task.assigned_to = event.target.value;
                     // Optional: update the state to reflect changes in the UI
+                    
                     setRoadmap((prevRoadmap) => ({
                       ...prevRoadmap,
                       roadmap: prevRoadmap.roadmap.map((m, i) =>
