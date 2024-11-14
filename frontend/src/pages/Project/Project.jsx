@@ -11,6 +11,7 @@ import {
   FormControl,
   Grid,
   Chip,
+  LinearProgress,
   InputLabel,
   Paper,
   Grid2,
@@ -27,6 +28,7 @@ const Project = () => {
   const [techStacks, setTechStacks] = useState([]);
   const [selectedTechStack, setSelectedTechStack] = useState('');
   const [roadmap, setRoadmap] = useState(null);
+  const [changeTask, setChangeTask] = useState([]);
 
   useEffect(() => {
     fetch(`${BASE_URL}team/view`, {
@@ -81,6 +83,23 @@ const Project = () => {
       })
       .catch((err) => console.error(err));
   };
+  const updateProject = () => {
+    fetch(`${BASE_URL}project/tasks/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+      body: JSON.stringify({"tasks":changeTask}),
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        console.log(data);
+        setChangeTask([]);
+      })
+      .catch((err) => console.error(err));
+  };
+
 
   const handleGenerateTechStacks = () => {
     fetch(`${BASE_URL}project/techstack/get`, {
@@ -125,15 +144,76 @@ const Project = () => {
       </Box>
     );
   }
+  // print progress percentage of tasks from roadmap that are completed
   return hasTeam ? (
     project ? (
       <Box sx={{ mt: 3 }}>
         {roadmap && (
           <Box sx={{ mt: 3 }}>
             <Box sx={{ height: '50px' }}></Box>
-            <Typography variant='h5' gutterBottom>
+            <Typography variant='h4' gutterBottom>
               Project Roadmap
             </Typography>
+            <Box sx={{ width: '100%', mb: 3 }}>
+              <Typography variant='subtitle1' gutterBottom>
+                Overall Progress:{' '}
+                {Math.round(
+                  (roadmap.roadmap
+                    .map(
+                      (milestone) =>
+                        milestone.tasks.filter(
+                          (task) => task.status === 'completed'
+                        ).length
+                    )
+                    .reduce((a, b) => a + b, 0) /
+                    roadmap.roadmap
+                      .map((milestone) => milestone.tasks.length)
+                      .reduce((a, b) => a + b, 0)) *
+                    100
+                )}
+                %
+              </Typography>
+              <LinearProgress
+                variant='determinate'
+                value={
+                  (roadmap.roadmap
+                    .map(
+                      (milestone) =>
+                        milestone.tasks.filter(
+                          (task) => task.status === 'completed'
+                        ).length
+                    )
+                    .reduce((a, b) => a + b, 0) /
+                    roadmap.roadmap
+                      .map((milestone) => milestone.tasks.length)
+                      .reduce((a, b) => a + b, 0)) *
+                  100
+                }
+                sx={{
+                  height: 10,
+                  borderRadius: 5,
+                  backgroundColor: '#e0e0e0', // Background color for the progress track
+                  '& .MuiLinearProgress-bar': {
+                    backgroundColor:
+                      (roadmap.roadmap
+                        .map(
+                          (milestone) =>
+                            milestone.tasks.filter(
+                              (task) => task.status === 'completed'
+                            ).length
+                        )
+                        .reduce((a, b) => a + b, 0) /
+                        roadmap.roadmap
+                          .map((milestone) => milestone.tasks.length)
+                          .reduce((a, b) => a + b, 0)) *
+                        100 ===
+                      100
+                        ? '#4caf50'
+                        : '#2196f3', // Green if 100%, else Blue
+                  },
+                }}
+              />
+            </Box>
             {roadmap.roadmap.map((milestone, index) => (
               <Paper
                 key={index}
@@ -142,16 +222,16 @@ const Project = () => {
                   p: 3,
                   mb: 3,
                   borderRadius: '12px',
-                  backgroundColor: 'lightgray',
+                  backgroundColor: 'transparent',
                 }}
               >
-                <Typography variant='h6'>{milestone.milestone}</Typography>
-                <Typography variant='subtitle2' sx={{ mb: 2 }}>
+                <Typography variant='h6' sx={{color:"white"}}>{milestone.milestone}</Typography>
+                <Typography variant='subtitle2' sx={{ mb: 2, color:'white' }}>
                   Deadline: {milestone.deadline}
                 </Typography>
                 {milestone.tasks.map((task, taskIndex) => {
                   let backgroundColor;
-                  switch (task.flags.type) {
+                  switch (task.flags) {
                     case 'L':
                       backgroundColor = 'lightgreen';
                       break;
@@ -164,10 +244,14 @@ const Project = () => {
                     default:
                       backgroundColor = 'red';
                   }
-                  console.log(task);
                   const handleAssignedChange = (event) => {
-                    task.assigned_to = event.target.value;
-                    // Optional: update the state to reflect changes in the UI
+                    task.assigned_to = teamMembers.find(
+                      (member) => member._id === event.target.value
+                    );
+                    console.log(
+                      'found tm: ' + JSON.stringify(task.assigned_to)
+                    );
+                    setChangeTask([...changeTask, task]);
                     setRoadmap((prevRoadmap) => ({
                       ...prevRoadmap,
                       roadmap: prevRoadmap.roadmap.map((m, i) =>
@@ -176,7 +260,13 @@ const Project = () => {
                               ...m,
                               tasks: m.tasks.map((t, ti) =>
                                 ti === taskIndex
-                                  ? { ...t, assigned_to: event.target.value }
+                                  ? {
+                                      ...t,
+                                      assigned_to: teamMembers.find(
+                                        (member) =>
+                                          member._id === event.target.value
+                                      ),
+                                    }
                                   : t
                               ),
                             }
@@ -184,7 +274,7 @@ const Project = () => {
                       ),
                     }));
                   };
-
+                  // console.log(task.assigned_to)
                   return (
                     <Paper
                       key={taskIndex}
@@ -210,16 +300,16 @@ const Project = () => {
                       >
                         <Chip
                           label={
-                            task.flags.type === 'L'
+                            task.flags === 'L'
                               ? 'Learning'
-                              : task.flags.type === 'I'
+                              : task.flags === 'I'
                               ? 'Implementation'
                               : 'Analysis'
                           }
                           color={
-                            task.flags.type === 'L'
+                            task.flags === 'L'
                               ? 'success'
-                              : task.flags.type === 'I'
+                              : task.flags === 'I'
                               ? 'info'
                               : 'error'
                           }
@@ -267,7 +357,13 @@ const Project = () => {
 
                         <Grid item xs={6}>
                           <Chip
-                            label={'Pending'}
+                            label={
+                              task.status === 'completed'
+                                ? 'completed'
+                                : task.status === 'in_progress'
+                                ? 'in progress'
+                                : 'pending'
+                            }
                             color={
                               task.status === 'completed'
                                 ? 'success'
@@ -281,10 +377,10 @@ const Project = () => {
                         </Grid>
                       </Grid>
 
-                      <FormControl fullWidth size='small' sx={{ mb: 1 }}>
+                      <FormControl fullWidth size='small' sx={{ mb: 1 }} disabled={task.status === 'completed'}>
                         <InputLabel>Assigned To</InputLabel>
                         <Select
-                          value={task.assigned_to || ''}
+                          value={task.assigned_to._id || ''}
                           onChange={handleAssignedChange}
                           label='Assigned To'
                           sx={{
@@ -311,7 +407,7 @@ const Project = () => {
             variant='contained'
             color='primary'
             sx={{ mt: 3 }}
-            onClick={() => startProject()}
+            onClick={() => updateProject()}
           >
             Update Project
           </Button>
@@ -363,7 +459,7 @@ const Project = () => {
 
         {roadmap && (
           <Box sx={{ mt: 3 }}>
-            <Typography variant='h5' gutterBottom>
+            <Typography variant='h4' gutterBottom>
               Project Roadmap
             </Typography>
             {roadmap.roadmap.map((milestone, index) => (
@@ -377,13 +473,13 @@ const Project = () => {
                   backgroundColor: 'lightgray',
                 }}
               >
-                <Typography variant='h6'>{milestone.milestone}</Typography>
-                <Typography variant='subtitle2' sx={{ mb: 2 }}>
+                <Typography variant='h6' sx={{color:"white"}}>{milestone.milestone}</Typography>
+                <Typography variant='subtitle2' sx={{ mb: 2, color:'white' }}>
                   Deadline: {milestone.deadline}
                 </Typography>
                 {milestone.tasks.map((task, taskIndex) => {
                   let backgroundColor;
-                  switch (task.flags.type) {
+                  switch (task.flags) {
                     case 'L':
                       backgroundColor = 'green';
                       break;
@@ -416,7 +512,6 @@ const Project = () => {
                       ),
                     }));
                   };
-                  console.log(task.flags.type);
                   return (
                     <Paper
                       key={taskIndex}
@@ -442,16 +537,16 @@ const Project = () => {
                       >
                         <Chip
                           label={
-                            task.flags.type === 'L'
+                            task.flags === 'L'
                               ? 'Learning'
-                              : task.flags.type === 'I'
+                              : task.flags === 'I'
                               ? 'Implementation'
                               : 'Analysis'
                           }
                           color={
-                            task.flags.type === 'L'
+                            task.flags === 'L'
                               ? 'success'
-                              : task.flags.type === 'I'
+                              : task.flags === 'I'
                               ? 'info'
                               : 'error'
                           }

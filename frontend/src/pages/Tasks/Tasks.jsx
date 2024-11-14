@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   Box,
   Typography,
@@ -8,13 +8,10 @@ import {
   Select,
   MenuItem,
   FormControl,
-  Tooltip,
   InputLabel,
   Chip,
+  LinearProgress,
 } from '@mui/material';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-
 const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 const Tasks = () => {
@@ -42,24 +39,69 @@ const Tasks = () => {
     const updatedTasks = tasks.map((task) =>
       task._id === taskId ? { ...task, status: newStatus } : task
     );
-    setTasks(updatedTasks);
 
-    // Call a function to update status on the server if needed
+    fetch(`${BASE_URL}project/tasks/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+      body: JSON.stringify({"tasks":[{ _id:taskId, status:newStatus }]}),
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        console.log(data);
+        setTasks(updatedTasks);
+      })
+      .catch((err) => console.error(err));
   };
+
+  // Calculate progress based on completed tasks
+  const completedTasksCount = tasks.filter(
+    (task) => task.status === 'completed'
+  ).length;
+  const totalTasksCount = tasks.length;
+  const progress =
+    totalTasksCount > 0 ? (completedTasksCount / totalTasksCount) * 100 : 0;
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-        <CircularProgress color="secondary" thickness={6} />
+      <Box
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
+        height='100vh'
+      >
+        <CircularProgress color='secondary' thickness={6} />
       </Box>
     );
   }
-  
+
   return (
-    <Box sx={{ mt: 3 }}>
-      <Typography variant="h4" gutterBottom>
+    <Box sx={{ mt: 7 }}>
+      <Typography variant='h4' gutterBottom>
         My Assigned Tasks
       </Typography>
+
+      {/* Progress Bar */}
+      <Box sx={{ width: '100%', mb: 3 }}>
+        <Typography variant='subtitle1' gutterBottom>
+          Overall Progress: {Math.round(progress)}%
+        </Typography>
+        <LinearProgress
+          variant='determinate'
+          value={progress}
+          sx={{
+            height: 10,
+            borderRadius: 5,
+            backgroundColor: '#e0e0e0', // Background color for the progress track
+            '& .MuiLinearProgress-bar': {
+              backgroundColor: progress === 100 ? '#4caf50' : '#2196f3', // Green if 100%, else Blue
+            },
+          }}
+        />
+      </Box>
+
       {tasks.map((task) => (
         <Paper
           key={task._id}
@@ -71,78 +113,106 @@ const Tasks = () => {
             borderRadius: '12px',
             border: '1px solid #e0e0e0',
             boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-            position: 'relative',
           }}
         >
-          {/* Type Chip */}
-          <Chip
-            label={
-              task.flags?.type === 'L' ? 'Learning' :
-              task.flags?.type === 'I' ? 'Implementation' : 'Analysis'
-            }
-            color={
-              task.flags?.type === 'L' ? 'success' :
-              task.flags?.type === 'I' ? 'info' : 'error'
-            }
-            size="small"
+          <Grid
+            container
+            spacing={2}
             sx={{
-              position: 'absolute',
-              top: 8,
-              left: 8,
-              fontWeight: 500,
+              justifyContent: 'space-around',
+              alignItems: 'start',
+              position: 'relative',
             }}
-          />
+          >
+            {/* Type Chip */}
+            <Chip
+              label={
+                task.flags === 'L'
+                  ? 'Learning'
+                  : task.flags === 'I'
+                  ? 'Implementation'
+                  : 'Analysis'
+              }
+              color={
+                task.flags === 'L'
+                  ? 'success'
+                  : task.flags === 'I'
+                  ? 'info'
+                  : 'error'
+              }
+              size='small'
+              sx={{
+                fontWeight: 500,
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                margin: '4px',
+              }}
+            />
 
-          <Grid container spacing={2}>
-            {/* Task Details */}
-            <Grid item xs={12} sm={8}>
-              <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                <Tooltip title="Task Name">
-                  <AssignmentIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
-                </Tooltip>
-                {task.name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                {task.description}
-              </Typography>
-              <FormControl fullWidth size="small" sx={{ mb: 1 }}>
-                <InputLabel>Status</InputLabel>
-                <Select
-                  value={task.status}
-                  onChange={(e) => handleStatusChange(task._id, e.target.value)}
-                  label="Status"
-                  sx={{ backgroundColor: '#ffffff', borderRadius: '4px' }}
-                >
-                  <MenuItem value="pending">Pending</MenuItem>
-                  <MenuItem value="in_progress">In Progress</MenuItem>
-                  <MenuItem value="completed">Completed</MenuItem>
-                </Select>
-              </FormControl>
-              <Chip
-                label={`Current Status: ${task.status}`}
-                color={
-                  task.status === 'completed' ? 'success' :
-                  task.status === 'in_progress' ? 'primary' : 'warning'
-                }
-                variant="outlined"
-                sx={{ mt: 1 }}
-              />
-            </Grid>
-
-            {/* Estimated Time */}
-            <Grid item xs={12} sm={4} textAlign="right">
+            <Grid item xs={12}>
               <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ mb: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}
+                variant='h6'
+                sx={{
+                  fontWeight: 600,
+                  color: '#333',
+                  mb: 1,
+                }}
               >
-                <Tooltip title="Estimated Time to Complete">
-                  <AccessTimeIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />
-                </Tooltip>
-                Estimated Time: {task.estimated_time} hours
+                {task.name}
               </Typography>
             </Grid>
           </Grid>
+
+          <Typography variant='body2' sx={{ color: 'darkslategray', mb: 2 }}>
+            {task.description}
+          </Typography>
+
+          <Grid container spacing={2} sx={{ alignItems: 'center', mb: 2 }}>
+            <Grid item xs={6}>
+              <Typography variant='body2' sx={{ color: '#6d6d6d' }}>
+                <strong>Estimated Time:</strong> {task.estimated_time} hours
+              </Typography>
+            </Grid>
+
+            <Grid item xs={6}>
+              <Chip
+                label={
+                  task.status === 'completed'
+                    ? 'Completed'
+                    : task.status === 'in_progress'
+                    ? 'In Progress'
+                    : 'Pending'
+                }
+                color={
+                  task.status === 'completed'
+                    ? 'success'
+                    : task.status === 'in_progress'
+                    ? 'primary'
+                    : 'warning'
+                }
+                size='small'
+                sx={{ fontWeight: 500 }}
+              />
+            </Grid>
+          </Grid>
+
+          <FormControl fullWidth size='small' sx={{ mb: 1 }}>
+            <InputLabel>Status</InputLabel>
+            <Select
+              value={task.status}
+              onChange={(e) => handleStatusChange(task._id, e.target.value)}
+              label='Status'
+              sx={{
+                backgroundColor: '#ffffff',
+                borderRadius: '4px',
+              }}
+            >
+              <MenuItem value='pending'>Pending</MenuItem>
+              <MenuItem value='in_progress'>In Progress</MenuItem>
+              <MenuItem value='completed'>Completed</MenuItem>
+            </Select>
+          </FormControl>
         </Paper>
       ))}
     </Box>

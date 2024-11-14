@@ -10,5 +10,25 @@ router.get('/get', async (req, res) => {
     return res.status(200).json({tasks});
 }
 );
-
+// update task route
+router.post('/update', async (req, res) => {
+    const { tasks } = req.body;
+    // iterate through tasks
+    tasks.forEach(async (task) => {
+        // find task by id and update status
+        if(task.status){
+            // update status
+            await Task.findByIdAndUpdate
+            (task._id, { status: task.status });
+        }
+        if(task.assigned_to){
+            // update assigned_to
+            await Task.findByIdAndUpdate
+            (task._id, { assigned_to: task.assigned_to });
+        }
+        Task
+    }
+    );
+    return res.status(200).json({ message: 'Task updated successfully' });
+});
 module.exports = router;

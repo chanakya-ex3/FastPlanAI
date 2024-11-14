@@ -6,8 +6,8 @@ const Task = require('../../../../models/Task');
 const Team = require('../../../../models/Team');
 const User = require('../../../../models/User');
 
-
 router.post('/create',async (req,res)=>{
+
     const session = await mongoose.startSession(); // Start a new session for the transaction
     session.startTransaction(); // Start a transaction
     
@@ -28,7 +28,7 @@ router.post('/create',async (req,res)=>{
                             description: taskData.description,
                             assigned_to: user,
                             estimated_time: taskData.estimated_time,
-                            flags: taskData.flags.type,
+                            flags: taskData.flags,
                         });
                         return task.save({ session }); // Save task to the database using the session
                     })
@@ -102,6 +102,5 @@ router.get('/get', async (req, res) => {
     }
 })
 
-
-
 module.exports = router;
+
