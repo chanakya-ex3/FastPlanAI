@@ -75,9 +75,9 @@ const Team = () => {
           setTeam(data.team);
           setHasTeam(true);
         }
+        window.location.reload();
       })
       .catch((err) => console.error(err));
-    window.location.reload();
   };
 
   useEffect(() => {
