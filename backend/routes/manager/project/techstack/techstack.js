@@ -10,5 +10,13 @@ router.post('/get', async (req, res) => {
     return res.status(200).json(techStacks);
 }
 );
+router.post('/get-with-context', async (req, res) => {
+    const {projectDescription, discussion } = req.body;
+    const tune = `This is my project Description.Suggest Various techstacks that can be used. give as per the format No extra text. This is my team discussion regarding the tech stack ${JSON.stringify(discussion)}`;
+    const format = "{'techStack':[[Tech Stack 1], [Tech Stack 2], [Tech Stack 3].. [Tech Stack n]]}";
+    const techStacks = await genAIModel({message: projectDescription, tune: tune,format:format});
+    return res.status(200).json(techStacks);
+}
+);
 
 module.exports = router;
