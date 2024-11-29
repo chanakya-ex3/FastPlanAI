@@ -20,7 +20,7 @@ const Tasks = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch(`${BASE_URL}project/tasks/get`, {
+    fetch(`${BASE_URL}tasks/get`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const Tasks = () => {
       task._id === taskId ? { ...task, status: newStatus } : task
     );
 
-    fetch(`${BASE_URL}project/tasks/update`, {
+    fetch(`${BASE_URL}tasks/update`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
